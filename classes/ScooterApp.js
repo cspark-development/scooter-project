@@ -9,8 +9,7 @@ class ScooterApp {
 			"bravo": [],
 			"charlie": [],
 		};
-		this.registeredUsers = {};
-	}
+		this.registeredUsers = {}; }
 
 	registerUser(username, password, age) {
 		if (age < 18) {
@@ -44,6 +43,8 @@ class ScooterApp {
 			throw new Error("no such user is logged in");
 		}
 
+		console.log("user is logged out");
+
 		this.registeredUsers[username].logout();
 	}
 
@@ -63,7 +64,7 @@ class ScooterApp {
 	dockScooter(scooter, station) {
 		if (!(station in this.stations)) {
 			throw new Error("no such station error");
-		} else if (scooter in this.stations[station]) {
+		} else if (this.stations[station].includes(scooter)) {
 			throw new Error("scooter already at station");
 		}
 
@@ -74,10 +75,14 @@ class ScooterApp {
 	};
 
 	rentScooter(scooter, user) {
+		if (scooter.user !== null) {
+			throw new Error("scooter already rented");	
+		}
+
 		/* There's not necessarily any checks asked for in the specification (Like if objects are invalid), ideally I'd implement them though */
 		const scooterStation = this.stations[scooter.station];
 
-		/* Scooter object is removed from array and therefore disappears forever? */ 
+		/* Scooter object is removed from array and therefore disappears forever? TODO: Fix!*/ 
 		scooter.rent();
 		scooterStation.splice(scooterStation.indexOf(scooter), 1);
 	}

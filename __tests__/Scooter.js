@@ -4,16 +4,17 @@ const ScooterApp = require("../classes/ScooterApp.js");
 
 /* We'll re-use the returned user object in future tests */
 const testScooterApp = new ScooterApp();
-const testUser = ScooterApp.registerUser("testuser", "testpassword", 20);
+const testUser = testScooterApp.registerUser("testuser", "testpassword", 20);
 const testScooter = testScooterApp.createScooter("testStation");
 
 describe("scooter.rent(user)", () => {
-	it.skip("checks a scooter out to a user", () => {
+	it("checks a scooter out to a user", () => {
 		const rentAttempt = testScooter.rent(testUser);
-		expect(rentAttempt).toHaveReturned();
+		expect(testScooter.user).toEqual(testUser);
 	});
 
-	it.skip("throws an error if battery dead or scooter broken", () => {
+	it("throws an error if battery dead or scooter broken", () => {
+		testScooter.charge = 10;
 		expect(() => {
 			testScooter.rent(testUser);
 		}).toThrow("scooter needs to charge");
@@ -21,7 +22,7 @@ describe("scooter.rent(user)", () => {
 });
 
 describe("scooter.dock(station)", () => {
-	it.skip("returns a scooter to a station", () => {
+	it("returns a scooter to a station", () => {
 		const dockAttempt = testScooter.dock("testStation");
 		expect(testScooter.user).toBeNull();
 	});

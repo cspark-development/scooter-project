@@ -7,13 +7,13 @@ const testScooterApp = new ScooterApp();
 let testUser;
 
 describe("user.login(password)", () => {
-	it.skip("logs a user in if the password is correct", () => {
+	it("logs a user in if the password is correct", () => {
 		testUser = testScooterApp.registerUser("testuser", "testpassword", 20);
 		const loginAttempt = testUser.login("testpassword");
-		expect(loginAttempt).toHaveReturned();
+		expect(testUser.loggedIn).toEqual(true);
 	});
 
-  	it.skip("throws an error if the password is incorrect", () => {
+  	it("throws an error if the password is incorrect", () => {
 		expect(() => {
 			testUser.login("testpasswordINCORRECT");
 		}).toThrow("incorrect password");
@@ -21,8 +21,8 @@ describe("user.login(password)", () => {
 });
 
 describe("user.logout()", () => {
-	it.skip("logs a user out", () => {
+	it("logs a user out", () => {
 		const logoutAttempt = testUser.logout();
-		expect(logoutAttempt).toHaveReturned();
+		expect(testUser.loggedIn).toEqual(false);
 	});
 });
