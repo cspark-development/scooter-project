@@ -9,7 +9,8 @@ class ScooterApp {
 			"bravo": [],
 			"charlie": [],
 		};
-		this.registeredUsers = {}; }
+		this.registeredUsers = {}; 
+	}
 
 	registerUser(username, password, age) {
 		if (age < 18) {
