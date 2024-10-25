@@ -1,0 +1,59 @@
+
+> scooter-project@1.0.0 test
+> jest
+
+PASS __tests__/ScooterApp.js
+  ● Console
+
+    console.log
+      user has been registered
+
+      at ScooterApp.log [as registerUser] (classes/ScooterApp.js:24:11)
+
+    console.log
+      user has been logged in
+
+      at ScooterApp.log [as loginUser] (classes/ScooterApp.js:36:12)
+
+    console.log
+      user is logged out
+
+      at ScooterApp.log [as logoutUser] (classes/ScooterApp.js:47:11)
+
+    console.log
+      created new scooter
+
+      at ScooterApp.log [as createScooter] (classes/ScooterApp.js:60:11)
+
+    console.log
+      scooter is docked
+
+      at ScooterApp.log [as dockScooter] (classes/ScooterApp.js:75:11)
+
+PASS __tests__/Scooter.js
+  ● Console
+
+    console.log
+      user has been registered
+
+      at ScooterApp.log [as registerUser] (classes/ScooterApp.js:24:11)
+
+    console.log
+      created new scooter
+
+      at ScooterApp.log [as createScooter] (classes/ScooterApp.js:60:11)
+
+PASS __tests__/User.js
+  ● Console
+
+    console.log
+      user has been registered
+
+      at ScooterApp.log [as registerUser] (classes/ScooterApp.js:24:11)
+
+
+Test Suites: 3 passed, 3 total
+Tests:       2 skipped, 19 passed, 21 total
+Snapshots:   0 total
+Time:        0.324 s, estimated 1 s
+Ran all test suites.
