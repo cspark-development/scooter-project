@@ -4,64 +4,65 @@ const Scooter = require("../classes/Scooter.js");
 const User = require("../classes/User.js");
 
 /* We'll re-use the returned user and scooter objects in future tests if they are successfully created */
+const testScooterApp = new ScooterApp();
 let testUser;
 let testScooter;
 
 describe("ScooterApp.registerUser(username, password, age)", () => {
 	it.skip("registers a new user if old enough", () => {
-		testUser = new ScooterApp("testuser", "testpassword", 20);
+		testUser = testScooterApp.registerUser("testuser", "testpassword", 20);
 		expect(testUser).toBeInstanceOf(User);
 	});
 
 	it.skip("throws an error if too young or already registered", () => {
 		expect(() => {
-			ScooterApp("testuser2", "testpassword", 15);
+			testScooterApp.registerUser("testuser2", "testpassword", 15);
 		}).toThrow("too young to register")
 
 		expect(() => {
-			ScooterApp("testuser", "testpassword", 20);
+			testScooterApp.registerUser("testuser", "testpassword", 20);
 		}).toThrow("already registered")
 	});
 });
 
 describe("ScooterApp.loginUser(username, password)", () => {
 	it.skip("logs in a registered user", () => {
-		const loginUserAttempt = ScooterApp.loginUser("testuser", "testpassword");
+		const loginUserAttempt = testScooterApp.loginUser("testuser", "testpassword");
 		expect(loginUserAttempt).toHaveReturned();
 	});
 
 	it.skip("throws an error if user not found or password incorrect", () => {
 		expect(() => {
-			ScooterApp.loginUser("testuserNULL", "testpassword");
+			testScooterApp.loginUser("testuserNULL", "testpassword");
 		}).toThrow("Username or password is incorrect");
 		expect(() => {
-			ScooterApp.loginUser("testuser", "testpasswordNULL");
+			testScooterApp.loginUser("testuser", "testpasswordNULL");
 		}).toThrow("Username or password is incorrect");
 	});
 });
 
 describe("ScooterApp.logoutUser(username)", () => {
 	it.skip("logs out a registered user", () => {
-		const logoutUserAttempt = ScooterApp.logoutUser("testuser");
+		const logoutUserAttempt = testScooterApp.logoutUser("testuser");
 		expect(logoutUserAttempt).toEqual("user is logged out");
 	});
 
 	it.skip("throws an error if user not found", () => {
 		expect(() => {
-			ScooterApp.logoutUser("testuserNULL");
+			testScooterApp.logoutUser("testuserNULL");
 		}).toThrow("no such user is logged in");
 	});
 });
 
 describe("ScooterApp.createScooter(station)", () => {
 	it.skip("creates a new scooter and adds it to ScooterApp.stations", () => {
-		testScooter = ScooterApp.createScooter("testStation");
+		testScooter = testScooterApp.createScooter("testStation");
 		expect(testScooter).toBeInstanceOf(Scooter);
 	});
 
 	it.skip("throws an error if a station does not exist", () => {
 		expect(() => {
-			ScooterApp.createScooter("testStationNULL");
+			testScooterApp.createScooter("testStationNULL");
 		}).toThrow("no such station error");
 	});
 });
@@ -73,26 +74,26 @@ describe("ScooterApp.dockScooter(scooter, station)", () => {
 
 	it.skip("throws an error if a station does not exist", () => {
 		expect(() => {
-			ScooterApp.dockScooter(testScooter, "testStationNULL");
+			testScooterApp.dockScooter(testScooter, "testStationNULL");
 		}).toThrow("no such station");
 	});
 
 	it.skip("throws an error if a scooter is already at a station", () => {
 		expect(() => {
-			ScooterApp.dockScooter(testScooter, "testStation");
+			testScooterApp.dockScooter(testScooter, "testStation");
 		}).toThrow("scooter already at station");
 	});
 });
 
 describe("ScooterApp.rentScooter(scooter, user)", () => {
 	it.skip("rents a scooter out to a user", () => {
-		const rentScooterAttempt = ScooterApp.rentScooter(testScooter, testUser);
+		const rentScooterAttempt = testScooterApp.rentScooter(testScooter, testUser);
 		expect(rentScooterAttempt).toHaveReturned();
 	});
 
 	it.skip("throws an error if a scooter is already rented", () => {
 		expect(() => {
-			ScooterApp.rentScooter(testScooter, testUser);
+			testScooterApp.rentScooter(testScooter, testUser);
 		}).toThrow("scooter already rented");
 	});
 });

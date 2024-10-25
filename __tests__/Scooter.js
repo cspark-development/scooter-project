@@ -3,8 +3,9 @@ const Scooter = require("../classes/Scooter.js");
 const ScooterApp = require("../classes/ScooterApp.js");
 
 /* We'll re-use the returned user object in future tests */
-const testUser = new ScooterApp("testuser", "testpassword", 20);
-const testScooter = ScooterApp.createScooter("testStation");
+const testScooterApp = new ScooterApp();
+const testUser = ScooterApp.registerUser("testuser", "testpassword", 20);
+const testScooter = testScooterApp.createScooter("testStation");
 
 describe("scooter.rent(user)", () => {
 	it.skip("checks a scooter out to a user", () => {
