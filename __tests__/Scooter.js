@@ -2,6 +2,7 @@ const { describe, expect, it } = require("@jest/globals");
 const Scooter = require("../classes/Scooter.js");
 const ScooterApp = require("../classes/ScooterApp.js");
 
+/* TODO: Ideally I'd refactor these tests to have all variables encapsulated within the tests itself so there are no dependencies from test to test. I should've done that from the beginning */
 /* We'll re-use the returned user object in future tests */
 const testScooterApp = new ScooterApp();
 const testUser = testScooterApp.registerUser("testuser", "testpassword", 20);

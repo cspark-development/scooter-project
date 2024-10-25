@@ -3,6 +3,7 @@ const ScooterApp = require("../classes/ScooterApp.js");
 const Scooter = require("../classes/Scooter.js");
 const User = require("../classes/User.js");
 
+/* TODO: Ideally I'd refactor these tests to have all variables encapsulated within the tests itself so there are no dependencies from test to test. I should've done that from the beginning */
 /* We'll re-use the returned user and scooter objects in future tests if they are successfully created */
 const testScooterApp = new ScooterApp();
 let testUser;
