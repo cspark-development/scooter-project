@@ -9,6 +9,8 @@ class ScooterApp {
 			"bravo": [],
 			"charlie": [],
 		};
+
+		this.unusedScooters = [];
 		this.registeredUsers = {}; 
 	}
 
@@ -83,8 +85,8 @@ class ScooterApp {
 		/* There's not necessarily any checks asked for in the specification (Like if objects are invalid), ideally I'd implement them though */
 		const scooterStation = this.stations[scooter.station];
 
-		/* Scooter object is removed from array and therefore disappears forever? TODO: Fix!*/ 
 		scooter.rent();
+		this.unusedScooters.push(scooter); /* Move to unused scooters */
 		scooterStation.splice(scooterStation.indexOf(scooter), 1);
 	}
 
