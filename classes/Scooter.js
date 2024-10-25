@@ -24,6 +24,24 @@ class Scooter {
 		/* Removing the scooter to the station is done by ScooterApp method */
 		this.user = null;
 	}
+
+	async recharge() {
+		console.log('Starting charge');
+    
+		await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
+		this.charge = 100
+
+		console.log('Charge complete');	
+	}
+
+	async requestRepair() {
+		console.log('Starting repair');
+    
+		await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
+		this.isBroken = false;
+
+		console.log('Repair complete');	
+	}
 }
 
 module.exports = Scooter;

@@ -30,17 +30,19 @@ describe("scooter.dock(station)", () => {
 });
 
 describe("scooter.charge()", () => {
-	it.skip("charges a scooter", () => {
-		// Arrange
-		// Act
-		// Assert
+	it("charges a scooter", async () => {
+		const testScooter = new Scooter();
+		testScooter.charge = 0;
+		await testScooter.recharge(); // we need to wait for the charge!
+		expect(testScooter.charge).toBe(100);
 	});
 });
 
 describe("scooter.repair()", () => {
-	it.skip("repairs a scooter", () => {
-		// Arrange
-		// Act
-		// Assert
+	it("repairs a scooter", async () => {
+		const testScooter = new Scooter();
+		testScooter.isBroken = true;
+		await testScooter.requestRepair(); // we need to wait for the repair!
+		expect(testScooter.isBroken).toBe(false);
 	});
 });
